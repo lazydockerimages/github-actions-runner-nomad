@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  github-actions-runner-nomad:
+    build:
+      args:
+        - TARGETARCH=${TARGETARCH:-amd64}
+      context: .
+    container_name: github-actions-runner-nomad
+    environment:
+      - "GITHUB_ACTIONS_RUNNER_NAME=${GITHUB_ACTIONS_RUNNER_NAME?}"   # define in .env
+      - "GITHUB_ACTIONS_RUNNER_ORG=${GITHUB_ACTIONS_RUNNER_ORG?}"     # define in .env
+      - "GITHUB_ACTIONS_RUNNER_TOKEN=${GITHUB_ACTIONS_RUNNER_TOKEN?}" # define in .env
+    image: github-actions-runner-nomad:latest
