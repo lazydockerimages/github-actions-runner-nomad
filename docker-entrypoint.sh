@@ -7,12 +7,12 @@ if [ ! -f .runner ]; then
   echo "Configuring the github actions runner"
   ./config.sh \
     --disableupdate \
-    --labels "${GITHUB_ACTIONS_RUNNER_NAME}" \
+    --labels "${GITHUB_ACTIONS_RUNNER_LABELS}" \
     --name "${GITHUB_ACTIONS_RUNNER_NAME}" \
     --replace \
     --token "${GITHUB_ACTIONS_RUNNER_TOKEN}" \
     --unattended \
-    --url "https://github.com/${GITHUB_ACTIONS_RUNNER_ORG}" \
+    --url "https://github.com/${GITHUB_ACTIONS_RUNNER_GITHUB_ORG}" \
     --work /usr/local/_work/
 fi
 

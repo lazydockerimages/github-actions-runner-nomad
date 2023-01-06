@@ -7,12 +7,13 @@ ARG HASHICORP_GPG_KEY="C874 011F 0AB4 0511 0D02 1055 3436 5D94 72D7 468F"
 # TARGETARCH will be amd64 or arm64
 ARG TARGETARCH
 
-# configure github actions runner to run as root within container
+# configure github actions runner to run as root within the container
 ENV RUNNER_ALLOW_RUNASROOT=true
 
 # expected environment variables that need to be passed in
+ENV GITHUB_ACTIONS_RUNNER_GITHUB_ORG=
+ENV GITHUB_ACTIONS_RUNNER_LABELS=
 ENV GITHUB_ACTIONS_RUNNER_NAME=
-ENV GITHUB_ACTIONS_RUNNER_ORG=
 ENV GITHUB_ACTIONS_RUNNER_TOKEN=
 
 RUN \

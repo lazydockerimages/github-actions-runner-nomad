@@ -35,16 +35,20 @@ help:
 
 # build the docker image - use dummy env vars to ensure it works without .env configured
 build:
-	GITHUB_ACTIONS_RUNNER_NAME='' GITHUB_ACTIONS_RUNNER_ORG='' GITHUB_ACTIONS_RUNNER_TOKEN='' $(DOCKER_COMPOSE) build
+	GITHUB_ACTIONS_RUNNER_GITHUB_ORG='' GITHUB_ACTIONS_RUNNER_LABELS='' GITHUB_ACTIONS_RUNNER_NAME='' GITHUB_ACTIONS_RUNNER_TOKEN='' $(DOCKER_COMPOSE) build
 
 # clean out test docker containers - use dummy env vars to ensure it works without .env configured
 clean:
-	GITHUB_ACTIONS_RUNNER_NAME='' GITHUB_ACTIONS_RUNNER_ORG='' GITHUB_ACTIONS_RUNNER_TOKEN='' ${DOCKER_COMPOSE} down
+	GITHUB_ACTIONS_RUNNER_GITHUB_ORG='' GITHUB_ACTIONS_RUNNER_LABELS='' GITHUB_ACTIONS_RUNNER_NAME='' GITHUB_ACTIONS_RUNNER_TOKEN='' $(DOCKER_COMPOSE) down
+
+# run a temporary debug shell
+run-temporary-debug-shell:
+	${DOCKER_COMPOSE} run --entrypoint bash --rm github-actions-runner-nomad
 
 # test the docker image
 test:
 	${DOCKER_COMPOSE} up
 
-# run a shell against the running test docker image
-test-shell:
+# run a shell within the running test container
+test-shell-within-running-test-container:
 	${DOCKER_COMPOSE} exec github-actions-runner-nomad bash

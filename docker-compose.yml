@@ -8,7 +8,8 @@ services:
       context: .
     container_name: github-actions-runner-nomad
     environment:
-      - "GITHUB_ACTIONS_RUNNER_NAME=${GITHUB_ACTIONS_RUNNER_NAME?}"   # define in .env
-      - "GITHUB_ACTIONS_RUNNER_ORG=${GITHUB_ACTIONS_RUNNER_ORG?}"     # define in .env
-      - "GITHUB_ACTIONS_RUNNER_TOKEN=${GITHUB_ACTIONS_RUNNER_TOKEN?}" # define in .env
-    image: github-actions-runner-nomad:latest
+      - "GITHUB_ACTIONS_RUNNER_GITHUB_ORG=${GITHUB_ACTIONS_RUNNER_GITHUB_ORG?}" # define in .env
+      - "GITHUB_ACTIONS_RUNNER_LABELS=${GITHUB_ACTIONS_RUNNER_LABELS?}"         # define in .env
+      - "GITHUB_ACTIONS_RUNNER_NAME=${GITHUB_ACTIONS_RUNNER_NAME?}"             # define in .env
+      - "GITHUB_ACTIONS_RUNNER_TOKEN=${GITHUB_ACTIONS_RUNNER_TOKEN?}"           # define in .env
+    image: localhost/github-actions-runner-nomad:latest
