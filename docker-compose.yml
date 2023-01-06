@@ -13,3 +13,9 @@ services:
       - "GITHUB_ACTIONS_RUNNER_NAME=${GITHUB_ACTIONS_RUNNER_NAME?}"             # define in .env
       - "GITHUB_ACTIONS_RUNNER_TOKEN=${GITHUB_ACTIONS_RUNNER_TOKEN?}"           # define in .env
     image: localhost/github-actions-runner-nomad:latest
+    volumes:
+      - github-actions-runner-nomad-config:/usr/local/etc/
+
+volumes:
+  github-actions-runner-nomad-config:
+    name: github-actions-runner-nomad-config
